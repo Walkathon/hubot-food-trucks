@@ -16,7 +16,7 @@
 #   <walkathon>
 
 module.exports = (robot) ->
- robot.hear /food trucks/i, (res) ->
+ robot.respond /food trucks/i, (res) ->
   res.http("http://www.chicagofoodtruckfinder.com")
      .get() (err, reponse, body) ->
 
