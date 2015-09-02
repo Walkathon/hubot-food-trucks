@@ -58,7 +58,9 @@ module.exports = (robot) ->
             if ((startDate.getHours() < 12) && (stopDate.getHours() > 12))
               localStop = new Array
               localStop.locationName = location.name.replace /, Chicago, IL/g, ""
-              localStop.departureTime = stopDate.getHours() + ":" + stopDate.getMinutes()
+              minutes = if stopDate.getMinutes() < 10 then "0" + stopDate.getMinutes() else stopDate.getMinutes()
+              localStop.departureTime = stopDate.getHours() + ":" + minutes
+              console.log stopDate.getMinutes()
               for truck in trucksJSON
                 if (truck.id == stop.truckId) 
                   localStop.url = truck.url
